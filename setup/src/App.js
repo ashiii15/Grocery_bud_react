@@ -20,7 +20,7 @@ function App() {
       // deals with edit
     }
     else{
-      // display alert
+      showAlert(true,'Item added to list','success')
       const newItem = {id:new Date().getTime().toString(),title:name}
       setList([...list,newItem])
       setName('')
@@ -29,6 +29,11 @@ function App() {
   }
   const showAlert = (show=false,message='',type='')=>{
     setAlert({show,message,type})
+  }
+  const clearList = ()=>{
+    showAlert(true,'All items cleared','danger')
+    setList([])
+
   }
   return (<section className='section-center'>
     <form className='grocery-form' onSubmit={submitHandler}>
@@ -42,13 +47,10 @@ function App() {
       {list.length > 0 && 
       <div className='grocery-container'>
       <List values={list}></List>
-      <button className='clear-btn'>clear items</button>
+      <button className='clear-btn' onClick={clearList}>clear items</button>
       </div>
       }
         
-      
-     
-
   </section>)
 }
 

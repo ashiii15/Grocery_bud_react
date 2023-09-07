@@ -4,6 +4,7 @@ import React,{useEffect} from "react";
     const timeout = setTimeout(()=>{
       removeAlert()
     },2000)
+    return ()=> clearTimeout(timeout)
 
   },[])
   return (
